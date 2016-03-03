@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:OC-MethodSwizzling/OC-MethodSwizzling.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OC +load vs +initialize/OC +load vs +initialize.xcodeproj">
    </FileRef>
    <FileRef

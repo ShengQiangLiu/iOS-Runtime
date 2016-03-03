@@ -18,3 +18,5 @@
 runtime 使用了发送消息 objc_msgSend 的方式对 +initialize 方法进行调用。也就是说 +initialize 方法的调用与普通方法的调用是一样的，走的都是发送消息的流程。换言之，如果子类没有实现 +initialize 方法，那么继承自父类的实现会被调用；如果一个类的分类实现了 +initialize 方法，那么就会对这个类中的实现造成覆盖。
 
 因此，如果一个子类没有实现 +initialize 方法，那么父类的实现是会被执行多次的。
+
+###二、MethodSwizzling
