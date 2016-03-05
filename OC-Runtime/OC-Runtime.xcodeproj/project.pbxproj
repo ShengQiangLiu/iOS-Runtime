@@ -13,6 +13,7 @@
 		76FE16341C19D6C70039C258 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76FE16321C19D6C70039C258 /* Main.storyboard */; };
 		76FE16361C19D6C70039C258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76FE16351C19D6C70039C258 /* Assets.xcassets */; };
 		76FE16391C19D6C70039C258 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76FE16371C19D6C70039C258 /* LaunchScreen.storyboard */; };
+		840ECF8A1C89D86D00BE286C /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 840ECF891C89D86D00BE286C /* NSArray+Category.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		76FE16351C19D6C70039C258 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76FE16381C19D6C70039C258 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76FE163A1C19D6C70039C258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		840ECF881C89D86D00BE286C /* NSArray+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Category.h"; sourceTree = "<group>"; };
+		840ECF891C89D86D00BE286C /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				76FE162D1C19D6C70039C258 /* AppDelegate.m */,
 				76FE162F1C19D6C70039C258 /* ViewController.h */,
 				76FE16301C19D6C70039C258 /* ViewController.m */,
+				840ECF881C89D86D00BE286C /* NSArray+Category.h */,
+				840ECF891C89D86D00BE286C /* NSArray+Category.m */,
 				76FE16321C19D6C70039C258 /* Main.storyboard */,
 				76FE16351C19D6C70039C258 /* Assets.xcassets */,
 				76FE16371C19D6C70039C258 /* LaunchScreen.storyboard */,
@@ -152,6 +157,7 @@
 			files = (
 				76FE16311C19D6C70039C258 /* ViewController.m in Sources */,
 				76FE162E1C19D6C70039C258 /* AppDelegate.m in Sources */,
+				840ECF8A1C89D86D00BE286C /* NSArray+Category.m in Sources */,
 				76FE162B1C19D6C70039C258 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +305,7 @@
 				76FE163F1C19D6C70039C258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

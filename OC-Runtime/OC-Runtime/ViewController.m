@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import <objc/runtime.h>
+
+#import "NSArray+Category.h"
 
 @interface ViewController ()
 
@@ -17,6 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+//    Class obj = [[NSObject alloc] init];
+//    NSLog(@"%@", obj);
+//    
+//    Class image = [[UIImage alloc] init];
+//    NSLog(@"%@", image);
+//    
+//    id object = [[NSObject alloc] init];
+//    NSLog(@"%@", object);
+
+    NSArray *array = [[NSArray alloc] init];
+    [array my_array];
+    
 }
 
 - (void)didReceiveMemoryWarning {
