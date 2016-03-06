@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:OC-Self&amp;Super/OC-Self&amp;Super.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OC-AssociatedObjects/OC-AssociatedObjects.xcodeproj">
    </FileRef>
    <FileRef
