@@ -11,10 +11,10 @@
 
 @implementation Father
 
-- (Class)myClass
-{
-    NSLog(@"Father myClass");
-    return object_getClass(self);
-}
+//- (Class)myClass
+//{
+//    NSLog(@"Father myClass");
+//    return object_getClass(self);
+//}
 
 @end
