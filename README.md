@@ -55,6 +55,88 @@ objc_class 结构体的定义：
 
 1、Objective-C 的实例和类都是一个对象；
 2、Objective-C 的对象实际上就是一个结构体；
+3、对象是通过 isa 指针获取类的信息。
+
+###二、方法
+方法和上面讲的类和对象也是一样的，它也是一个结构体：
+
+	/// An opaque type that represents a method in a class definition.
+	typedef struct objc_method *Method;
+
+它在objc/runtime.h里面的定义是
+ 
+	struct objc_method {
+	    SEL method_name                 OBJC2_UNAVAILABLE;  // 方法名
+	    char *method_types              OBJC2_UNAVAILABLE;
+	    IMP method_imp                  OBJC2_UNAVAILABLE;  // 方法实现
+	}
+
+解释下其中的SEL和IMP变量：
+
+#####什么是SEL？
+SEL一般我们称为选择器，它在objc.h中的定义如下：
+
+	/// An opaque type that represents a method selector.
+	typedef struct objc_selector *SEL;
+
+SEL是一个指向 objc_selector 结构体的指针。
+
+可以通过以下三种方法来获取到了SEL:
+
+**SEL sel_registerName(const char *str)**
+
+**@selector(selector)**
+
+**SEL NSSelectorFromString(NSString *aSelectorName)**
+
+
+ 	SEL sel = @selector(length);
+    NSLog(@"%s", sel_getName(sel));
+    NSLog(@"%p", sel);
+    
+    const char *selName = [@"length" UTF8String];
+    SEL sel2 = sel_registerName(selName);
+    NSLog(@"%s", sel_getName(sel2));
+    NSLog(@"%p", sel2);
+    
+    SEL sel3 = NSSelectorFromString(@"length");
+    NSLog(@"%s", sel_getName(sel3));
+    NSLog(@"%p", sel3);
+    
+    NSLog(@"%d", sel_isEqual(sel, sel2));
+    NSLog(@"%d", sel_isEqual(sel2, sel3));
+
+打印结果：
+
+![image](/SEL.png)
+
+通过上面我们发现Objective-C的方法是根据方法名来区别的。每一个方法都对应着一个SEL。所以在Objective-C同一个类(及类的继承体系)中，不能存在2个同名的方法，即使参数类型不同也不行。相同的方法只能对应一个SEL。
+
+结论：SEL 通过方法名代表着这个方法，每个方法对应着一个唯一的SEL，同类或者它的继承体系中，不能有相同的两个SEL。
+
+
+#####什么是IMP？
+IMP 在objc.h 中的定义如下：
+
+	/// A pointer to the function of a method implementation. 
+	typedef id (*IMP)(id, SEL, ...); 
+
+IMP 是一个函数指针，通过SEL获得指向方法的入口地址。id表示调用方法的对象，SEL标示着方法，...表示方法的一些参数。
+
+总结：
+
+1、SEL 通过方法名代表着这个方法，每个方法对应着一个唯一的SEL，同类或者它的继承体系中，不能有相同的两个SEL；
+
+2、IMP 是一个函数指针，通过SEL获得指向方法的入口地址。
+
+
+###三、消息机制
+
+
+
+
+
+
 
 
 
