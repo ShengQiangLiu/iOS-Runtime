@@ -43,7 +43,7 @@ objc_class 结构体的定义：
 现在我们列出来了两个结构体的定义，发现了一个大问题，它们里面都有一个叫 isa 的变量。
 这个 isa 是干什么的呢？看下图：
 
-![image](/isa指针.png)
+![image](isa指针.png)
 
 当对象初始化时，会分配内存，并初始化其成员变量，也就是为对象的结构体 objc_class 分配内存，让其中的 isa 指针可以访问类以及其继承体系。
 
@@ -108,9 +108,14 @@ SEL是一个指向 objc_selector 结构体的指针。
 
 打印结果：
 
-![image](/SEL.png)
+![image](SEL.png)
 
 通过上面我们发现Objective-C的方法是根据方法名来区别的。每一个方法都对应着一个SEL。所以在Objective-C同一个类(及类的继承体系)中，不能存在2个同名的方法，即使参数类型不同也不行。相同的方法只能对应一个SEL。
+
+通过 clang -rewrite-legacy-objc 还发现 @selector 实际上就是 sel_registerName 函数。
+
+![image](selector.png)
+
 
 结论：SEL 通过方法名代表着这个方法，每个方法对应着一个唯一的SEL，同类或者它的继承体系中，不能有相同的两个SEL。
 
@@ -130,11 +135,81 @@ IMP 是一个函数指针，通过SEL获得指向方法的入口地址。id表�
 2、IMP 是一个函数指针，通过SEL获得指向方法的入口地址。
 
 
-###三、消息机制
+###三、消息发送机制
+
+在Objective-C中，消息直到运行时才绑定到方法实现上。下面来看看消息发送具体是怎么样的。
+
+新建一个helloClass类在 helloClass 类里面定义一个实例方法和一个类方法：
+
+![image](HelloClass类.png)
+
+新建一个 HelloWorldClass 的类，继承自 HelloClass 类，在里面写一个helloWorldMethod方法：
+
+![image](HelloWorldClass类.png)
+
+通过clang命令：
+
+	$ clang -rewrite-legacy-objc HelloWorldClass.m
+
+得到 helloWorldMethod方法C++代码：
+
+![image](C++HelloWorldClass类.png)
+
+首先，我们看下 helloWorldMethod 方法C++代码中两个参数，这两个参数在OC方法中是隐藏的，第一个参数是调用该方法的对象，第二个参数就是该方法的SEL。
+
+在运行时，消息绑定到方法实现上，编译器将方法调用转换为objc_msgSend，参考向实例对象发送 helloInstanceMethod 消息：
+
+	objc_msgSend(obj, sel_registerName("helloInstanceMethod"))
+
+当我们obj对象初始化的时候，也就是初始化了obj 结构体 objc_class。
+
+当我们向obj对象发送helloInstanceMethod消息时，objc_msgSend函数通过obj对象中的isa指针获取到类的结构体，先从方法缓存方法列表cache methodLists中寻找，找到了调用对应函数实现；如果没有找到，再从方法列表methodLists里面找，如果找不到，一直沿着继承树往基类找；基类中如果没有就会走消息转发、动态方法解析(后面会讲)。
+
+![image](SengMessage.png)
+
+
+前面说过类也是对象，向类对象发送消息的流程和向实例对象发送消息的流程是一样的，这里不细说。
+
+当我们向父类发送消息时，参考向super发送 helloInstanceMethod 消息，使用的是objc_msgSendSuper函数：
+
+	objc_msgSendSuper(struct objc_super *super, SEL op, ...)
+	
+它的第一个参数是一个指向objc_super 结构体的指针，objc_super结构体在objc/message.h中的定义如下：
+	
+	/// Specifies the superclass of an instance. 
+	struct objc_super {
+    /// Specifies an instance of a class.
+    __unsafe_unretained id receiver;
+
+    /// Specifies the particular superclass of the instance to message. 
+	#if !defined(__cplusplus)  &&  !__OBJC2__
+    /* For compatibility with old objc-runtime.h header */
+    __unsafe_unretained Class class;
+	#else
+    __unsafe_unretained Class super_class;
+	#endif
+    /* super_class is the first class to search */
+	};
+	#endif
+
+一共有二个参数，第一个是消息接受的实例，第二个是父类。helloInstanceMethod中的objc_super结构第一个参数传入的self，第二个参数最后得到父类HelloClass。使用super编译器标示符发送消息实际上和self发送消息的机制是一样的，只是去父类的方法列表中找该方法。
+
+
+最后使用clang命令
+
+	$ clang -rewrite-objc HelloWorldClass.m
+	
+发现一些关于元类的细节：
+
+![image](objc_class_setup.png)
+
+前面说的元类的东西一直没有看到，在这个里面证明了"OC-类和对象"里面的那张isa游走图。
+
+根据这张图可以推断出来HelloWorldClass类的isa指针指向HelloWorldClass的元类，而HelloWorldClass的元类的isa指针执行的是基类NSObject的元类。
 
 
 
-
+###四、消息转发机制
 
 
 

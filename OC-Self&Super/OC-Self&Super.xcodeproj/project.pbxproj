@@ -10,6 +10,8 @@
 		8406946F1C8C2C6A00391B9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406946E1C8C2C6A00391B9F /* main.m */; };
 		840694791C8C2C8E00391B9F /* Father.m in Sources */ = {isa = PBXBuildFile; fileRef = 840694761C8C2C8E00391B9F /* Father.m */; };
 		8406947A1C8C2C8E00391B9F /* Son.m in Sources */ = {isa = PBXBuildFile; fileRef = 840694781C8C2C8E00391B9F /* Son.m */; };
+		844BC2811C9125D900EB0D1F /* HelloWorldClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC2801C9125D900EB0D1F /* HelloWorldClass.m */; };
+		844BC2871C91358900EB0D1F /* HelloClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC2861C91358900EB0D1F /* HelloClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,10 @@
 		840694761C8C2C8E00391B9F /* Father.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Father.m; sourceTree = "<group>"; };
 		840694771C8C2C8E00391B9F /* Son.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Son.h; sourceTree = "<group>"; };
 		840694781C8C2C8E00391B9F /* Son.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Son.m; sourceTree = "<group>"; };
+		844BC27F1C9125D900EB0D1F /* HelloWorldClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldClass.h; sourceTree = "<group>"; };
+		844BC2801C9125D900EB0D1F /* HelloWorldClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldClass.m; sourceTree = "<group>"; };
+		844BC2851C91358900EB0D1F /* HelloClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloClass.h; sourceTree = "<group>"; };
+		844BC2861C91358900EB0D1F /* HelloClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,10 @@
 				840694771C8C2C8E00391B9F /* Son.h */,
 				840694781C8C2C8E00391B9F /* Son.m */,
 				8406946E1C8C2C6A00391B9F /* main.m */,
+				844BC2851C91358900EB0D1F /* HelloClass.h */,
+				844BC2861C91358900EB0D1F /* HelloClass.m */,
+				844BC27F1C9125D900EB0D1F /* HelloWorldClass.h */,
+				844BC2801C9125D900EB0D1F /* HelloWorldClass.m */,
 			);
 			path = "OC-Self&Super";
 			sourceTree = "<group>";
@@ -130,6 +140,8 @@
 			files = (
 				8406947A1C8C2C8E00391B9F /* Son.m in Sources */,
 				8406946F1C8C2C6A00391B9F /* main.m in Sources */,
+				844BC2871C91358900EB0D1F /* HelloClass.m in Sources */,
+				844BC2811C9125D900EB0D1F /* HelloWorldClass.m in Sources */,
 				840694791C8C2C8E00391B9F /* Father.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +261,7 @@
 				840694741C8C2C6A00391B9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
