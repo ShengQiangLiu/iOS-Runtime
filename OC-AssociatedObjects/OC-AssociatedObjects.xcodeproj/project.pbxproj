@@ -14,6 +14,7 @@
 		840ECF7B1C89B41F00BE286C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840ECF7A1C89B41F00BE286C /* Assets.xcassets */; };
 		840ECF7E1C89B41F00BE286C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840ECF7C1C89B41F00BE286C /* LaunchScreen.storyboard */; };
 		840ECF871C89B44600BE286C /* UIViewController+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 840ECF861C89B44600BE286C /* UIViewController+AssociatedObjects.m */; };
+		844BC2F51C944DB800EB0D1F /* UIView+Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC2F41C944DB800EB0D1F /* UIView+Gesture.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		840ECF7F1C89B41F00BE286C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840ECF851C89B44600BE286C /* UIViewController+AssociatedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AssociatedObjects.h"; sourceTree = "<group>"; };
 		840ECF861C89B44600BE286C /* UIViewController+AssociatedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AssociatedObjects.m"; sourceTree = "<group>"; };
+		844BC2F31C944DB800EB0D1F /* UIView+Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Gesture.h"; sourceTree = "<group>"; };
+		844BC2F41C944DB800EB0D1F /* UIView+Gesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Gesture.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				840ECF721C89B41F00BE286C /* ViewController.m */,
 				840ECF851C89B44600BE286C /* UIViewController+AssociatedObjects.h */,
 				840ECF861C89B44600BE286C /* UIViewController+AssociatedObjects.m */,
+				844BC2F31C944DB800EB0D1F /* UIView+Gesture.h */,
+				844BC2F41C944DB800EB0D1F /* UIView+Gesture.m */,
 				840ECF741C89B41F00BE286C /* Main.storyboard */,
 				840ECF7A1C89B41F00BE286C /* Assets.xcassets */,
 				840ECF7C1C89B41F00BE286C /* LaunchScreen.storyboard */,
@@ -157,6 +162,7 @@
 			files = (
 				840ECF871C89B44600BE286C /* UIViewController+AssociatedObjects.m in Sources */,
 				840ECF731C89B41F00BE286C /* ViewController.m in Sources */,
+				844BC2F51C944DB800EB0D1F /* UIView+Gesture.m in Sources */,
 				840ECF701C89B41F00BE286C /* AppDelegate.m in Sources */,
 				840ECF6D1C89B41F00BE286C /* main.m in Sources */,
 			);
@@ -305,6 +311,7 @@
 				840ECF841C89B41F00BE286C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

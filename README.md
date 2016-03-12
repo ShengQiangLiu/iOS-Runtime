@@ -401,7 +401,8 @@ Method Swizzling 实现的原理就是调换IMP的指向：
 3、在dispatch_once中执行，保证代码不管在多少个线程情况下，只被执行一次。
    
    
-###三、
+###七、Associated Object
+
   
   
   

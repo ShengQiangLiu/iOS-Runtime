@@ -8,9 +8,10 @@
 
 #import "ViewController.h"
 #import "UIViewController+AssociatedObjects.h"
+#import "UIView+Gesture.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) UIView *gestureView;
 @end
 
 __weak NSString *string_weak_assign = nil;
@@ -37,15 +38,26 @@ __weak NSString *string_weak_copy   = nil;
     NSLog(@"self.associatedObject_retain: %@", self.associatedObject_retain);
     NSLog(@"self.associatedObject_copy:   %@", self.associatedObject_copy);
     
+    
+    self.gestureView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 200, 300)];
+    self.gestureView.backgroundColor = [UIColor purpleColor];
+    [self.view addSubview:self.gestureView];
+    
+    [self.gestureView eq_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecognizer) {
+        NSLog(@"aaaaaa");
+    }];
+    
+    
+    
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    NSLog(@"self.associatedObject_assign: %@", self.associatedObject_assign); // Will Crash
-    NSLog(@"self.associatedObject_retain: %@", self.associatedObject_retain);
-    NSLog(@"self.associatedObject_copy:   %@", self.associatedObject_copy);
-    
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    
+//    NSLog(@"self.associatedObject_assign: %@", self.associatedObject_assign); // Will Crash
+//    NSLog(@"self.associatedObject_retain: %@", self.associatedObject_retain);
+//    NSLog(@"self.associatedObject_copy:   %@", self.associatedObject_copy);
+//    
+//}
 
 
 - (void)didReceiveMemoryWarning {
