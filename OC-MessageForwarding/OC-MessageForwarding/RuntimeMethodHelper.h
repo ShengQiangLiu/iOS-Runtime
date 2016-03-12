@@ -1,14 +1,13 @@
 //
-//  HelloClass.h
+//  RuntimeMethodHelper.h
 //  OC-MessageForwarding
 //
-//  Created by admin on 16/3/11.
+//  Created by admin on 16/3/12.
 //  Copyright © 2016年 ShengQiangLiu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface HelloClass : NSObject
+@interface RuntimeMethodHelper : NSObject
 - (void)hello;
-+ (HelloClass *)hi;
 @end

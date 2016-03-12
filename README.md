@@ -211,7 +211,143 @@ IMP 是一个函数指针，通过SEL获得指向方法的入口地址。id表�
 
 ###四、消息转发机制
 
+当正常的消息发送走不通的时候，会走下面的消息转发机制：
 
+![image](ForwardingMessage.png)
+
+消息转发机制基本分为三个步骤：
+
+1、动态方法解析
+
+2、备用接受者
+
+3、完整转发
+
+新建一个HelloClass的类，定义两个方法：
+
+	@interface HelloClass : NSObject
+	- (void)hello;
+	+ (HelloClass *)hi;
+	@end
+
+
+##### 动态方法解析
+对象在接收到未知的消息时，首先会调用所属类的类方法+resolveInstanceMethod:(实例方法)或者+resolveClassMethod:(类方法)。在这个方法中，我们有机会为该未知消息新增一个”处理方法”“。不过使用该方法的前提是我们已经实现了该”处理方法”，只需要在运行时通过class_addMethod函数动态添加到类里面就可以了。
+
+	void functionForMethod(id self, SEL _cmd)
+	{
+	    NSLog(@"Hello!");
+	}
+	
+	Class functionForClassMethod(id self, SEL _cmd)
+	{
+	    NSLog(@"Hi!");
+	    return [HelloClass class];
+	}
+	
+	#pragma mark - 1、动态方法解析
+	+ (BOOL)resolveClassMethod:(SEL)sel
+	{
+	    NSLog(@"resolveClassMethod");
+	    NSString *selString = NSStringFromSelector(sel);
+	    if ([selString isEqualToString:@"hi"])
+	    {
+	        Class metaClass = objc_getMetaClass("HelloClass");
+	        class_addMethod(metaClass, @selector(hi), (IMP)functionForClassMethod, "v@:");
+	        return YES;
+	    }
+	    return [super resolveClassMethod:sel];
+	}
+	
+	+ (BOOL)resolveInstanceMethod:(SEL)sel
+	{
+	    NSLog(@"resolveInstanceMethod");
+	
+	    NSString *selString = NSStringFromSelector(sel);
+	    if ([selString isEqualToString:@"hello"])
+	    {
+	        class_addMethod(self, @selector(hello), (IMP)functionForMethod, "v@:");
+	        return YES;
+	    }
+	    return [super resolveInstanceMethod:sel];
+	}
+
+
+##### 备用接受者
+动态方法解析无法处理消息，则会走备用接受者。这个备用接受者只能是一个新的对象，不能是self本身，否则就会出现无限循环。如果我们没有指定相应的对象来处理aSelector，则应该调用父类的实现来返回结果。
+
+	#pragma mark - 2、备用接收者
+	- (id)forwardingTargetForSelector:(SEL)aSelector
+	{
+	    NSLog(@"forwardingTargetForSelector");
+	    
+	    NSString *selectorString = NSStringFromSelector(aSelector);
+	    
+	    // 将消息交给_helper来处理
+	    if ([selectorString isEqualToString:@"hello"]) {
+	        return _helper;
+	    }
+	    return [super forwardingTargetForSelector:aSelector];
+	}
+
+在本类中需要实现这个新的接受对象
+
+	@interface HelloClass ()
+	{
+	    RuntimeMethodHelper *_helper;
+	}
+	@end
+	
+	@implementation HelloClass
+	
+	- (instancetype)init
+	{
+	    self = [super init];
+	    if (self) {
+	        _helper = [RuntimeMethodHelper new];
+	    }
+	    return self;
+	}
+	
+RuntimeMethodHelper 类需要实现这个需要转发的方法：
+
+	#import "RuntimeMethodHelper.h"
+
+	@implementation RuntimeMethodHelper
+	- (void)hello
+	{
+	    NSLog(@"%@, %p", self, _cmd);
+	}
+	@end
+
+
+
+
+##### 完整消息转发
+如果动态方法解析和备用接受者都没有处理这个消息，那么就会走完整消息转发：
+
+	#pragma mark - 3、完整消息转发
+	- (void)forwardInvocation:(NSInvocation *)anInvocation
+	{
+	    NSLog(@"forwardInvocation");
+	    if ([RuntimeMethodHelper instancesRespondToSelector:anInvocation.selector]) {
+	        [anInvocation invokeWithTarget:_helper];
+	    }
+	}
+	
+	/*必须重新这个方法，消息转发机制使用从这个方法中获取的信息来创建NSInvocation对象*/
+	- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+	{
+	    NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
+	    if (!signature)
+	    {
+	        if ([RuntimeMethodHelper instancesRespondToSelector:aSelector])
+	        {
+	            signature = [RuntimeMethodHelper instanceMethodSignatureForSelector:aSelector];
+	        }
+	    }
+	    return signature;
+	}
 
 
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		844BC2951C92E66C00EB0D1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC2941C92E66C00EB0D1F /* main.m */; };
 		844BC29D1C92E6AE00EB0D1F /* HelloClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC29C1C92E6AE00EB0D1F /* HelloClass.m */; };
+		844BC2A01C93BFAA00EB0D1F /* RuntimeMethodHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC29F1C93BFAA00EB0D1F /* RuntimeMethodHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		844BC2941C92E66C00EB0D1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		844BC29B1C92E6AE00EB0D1F /* HelloClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloClass.h; sourceTree = "<group>"; };
 		844BC29C1C92E6AE00EB0D1F /* HelloClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloClass.m; sourceTree = "<group>"; };
+		844BC29E1C93BFAA00EB0D1F /* RuntimeMethodHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeMethodHelper.h; sourceTree = "<group>"; };
+		844BC29F1C93BFAA00EB0D1F /* RuntimeMethodHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuntimeMethodHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				844BC2941C92E66C00EB0D1F /* main.m */,
 				844BC29B1C92E6AE00EB0D1F /* HelloClass.h */,
 				844BC29C1C92E6AE00EB0D1F /* HelloClass.m */,
+				844BC29E1C93BFAA00EB0D1F /* RuntimeMethodHelper.h */,
+				844BC29F1C93BFAA00EB0D1F /* RuntimeMethodHelper.m */,
 			);
 			path = "OC-MessageForwarding";
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844BC2A01C93BFAA00EB0D1F /* RuntimeMethodHelper.m in Sources */,
 				844BC2951C92E66C00EB0D1F /* main.m in Sources */,
 				844BC29D1C92E6AE00EB0D1F /* HelloClass.m in Sources */,
 			);
