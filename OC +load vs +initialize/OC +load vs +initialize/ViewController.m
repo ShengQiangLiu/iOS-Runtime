@@ -10,6 +10,9 @@
 #import "MyInitializeTest.h"
 #import "MySubInitializeTest.h"
 
+#import "MyInitializeTest+Category.h"
+#import "MySubInitializeTest+Category.h"
+
 @interface ViewController ()
 
 @end
@@ -37,8 +40,10 @@
     
     
     /*+initialize方法会在该类或者子类收到第一条消息的时候调用*/
-    MySubInitializeTest *test = [[MySubInitializeTest alloc] init];
+//    MySubInitializeTest *test = [[MySubInitializeTest alloc] init];
 //    MyInitializeTest *test = [[MyInitializeTest alloc] init];
+    
+    MySubInitializeTest *test = [MySubInitializeTest myNew];
 }
 
 - (void)didReceiveMemoryWarning {

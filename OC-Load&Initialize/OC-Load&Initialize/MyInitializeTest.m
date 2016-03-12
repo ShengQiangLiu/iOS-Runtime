@@ -10,9 +10,9 @@
 
 @implementation MyInitializeTest
 
-+ (void)initialize
-{
-    NSLog(@"主类：%@", NSStringFromClass(self));
-}
+//+ (void)initialize
+//{
+//    NSLog(@"主类：%@", NSStringFromClass(self));
+//}
 
 @end

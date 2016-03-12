@@ -1,5 +1,5 @@
 //
-//  MyLoadTest.m
+//  MySubLoadTest.h
 //  OC +load vs +initialize
 //
 //  Created by Sniper on 16/3/3.
@@ -8,11 +8,6 @@
 
 #import "MyLoadTest.h"
 
-@implementation MyLoadTest
-
-+ (void)load
-{
-    NSLog(@"%@", NSStringFromClass(self));
-}
+@interface MySubLoadTest : MyLoadTest
 
 @end

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:OC-Load&amp;Initialize/OC-Load&amp;Initialize.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OC-MessageForwarding/OC-MessageForwarding.xcodeproj">
    </FileRef>
    <FileRef
@@ -12,9 +15,6 @@
    </FileRef>
    <FileRef
       location = "group:OC-MethodSwizzling/OC-MethodSwizzling.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:OC +load vs +initialize/OC +load vs +initialize.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:OC-Runtime/OC-Runtime.xcodeproj">
