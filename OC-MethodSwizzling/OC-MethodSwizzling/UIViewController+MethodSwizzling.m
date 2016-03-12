@@ -17,24 +17,23 @@
 + (void)load
 {
     static dispatch_once_t onceToken;
+    /*单例保证并行情况下不会有问题*/
     dispatch_once(&onceToken, ^{
         Class class = [self class];
         
-        /*
-         SEL: 是一个函数指针，指向一个函数实体
-         */
         SEL originalSelector = @selector(viewWillAppear:);
         SEL swizzledSelector = @selector(my_viewWillAppear);
         
-        /*方法实现通过下面方法获得*/
+        /*获取原来的方法*/
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
+        /*获取要替换的方法*/
         Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
         
         /*originalSelector是否有实现，如果存在返回YES，不存在返回NO*/
         BOOL success = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
         if (success)
         {
-            /**/
+            /*修改要替换的方法实现为原有实现*/
             class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
         }
         else

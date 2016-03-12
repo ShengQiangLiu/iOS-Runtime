@@ -13,7 +13,8 @@
 		765E84B81C8882D700E6A4F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 765E84B61C8882D700E6A4F9 /* Main.storyboard */; };
 		765E84BA1C8882D700E6A4F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765E84B91C8882D700E6A4F9 /* Assets.xcassets */; };
 		765E84BD1C8882D700E6A4F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 765E84BB1C8882D700E6A4F9 /* LaunchScreen.storyboard */; };
-		765E84C61C88857A00E6A4F9 /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 765E84C51C88857A00E6A4F9 /* UIViewController+MethodSwizzling.m */; settings = {ASSET_TAGS = (); }; };
+		765E84C61C88857A00E6A4F9 /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 765E84C51C88857A00E6A4F9 /* UIViewController+MethodSwizzling.m */; };
+		844BC2EF1C94173900EB0D1F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC2EE1C94173900EB0D1F /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		765E84BE1C8882D700E6A4F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		765E84C41C88857A00E6A4F9 /* UIViewController+MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MethodSwizzling.h"; sourceTree = "<group>"; };
 		765E84C51C88857A00E6A4F9 /* UIViewController+MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MethodSwizzling.m"; sourceTree = "<group>"; };
+		844BC2ED1C94173900EB0D1F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		844BC2EE1C94173900EB0D1F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				765E84B11C8882D700E6A4F9 /* AppDelegate.m */,
 				765E84B31C8882D700E6A4F9 /* ViewController.h */,
 				765E84B41C8882D700E6A4F9 /* ViewController.m */,
+				844BC2ED1C94173900EB0D1F /* BaseViewController.h */,
+				844BC2EE1C94173900EB0D1F /* BaseViewController.m */,
 				765E84C41C88857A00E6A4F9 /* UIViewController+MethodSwizzling.h */,
 				765E84C51C88857A00E6A4F9 /* UIViewController+MethodSwizzling.m */,
 				765E84B61C8882D700E6A4F9 /* Main.storyboard */,
@@ -156,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				765E84B51C8882D700E6A4F9 /* ViewController.m in Sources */,
+				844BC2EF1C94173900EB0D1F /* BaseViewController.m in Sources */,
 				765E84B21C8882D700E6A4F9 /* AppDelegate.m in Sources */,
 				765E84AF1C8882D700E6A4F9 /* main.m in Sources */,
 				765E84C61C88857A00E6A4F9 /* UIViewController+MethodSwizzling.m in Sources */,
@@ -305,6 +311,7 @@
 				765E84C31C8882D700E6A4F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

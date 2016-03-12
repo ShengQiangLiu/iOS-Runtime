@@ -20,11 +20,16 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)my_viewWillAppear
-{
-    [super my_viewWillAppear];
+//- (void)my_viewWillAppear
+//{
+//    [super my_viewWillAppear];
     
-}
+//}
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
