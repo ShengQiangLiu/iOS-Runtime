@@ -13,4 +13,8 @@
 {
     NSLog(@"%@, %p", self, _cmd);
 }
+- (void)hi
+{
+    NSLog(@"%@, %p", self, _cmd);
+}
 @end

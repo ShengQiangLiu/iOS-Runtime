@@ -30,6 +30,8 @@
 //    id object = [[NSObject alloc] init];
 //    NSLog(@"%@", object);
 
+    
+    
     NSArray *array = [[NSArray alloc] init];
     [array my_array];
     

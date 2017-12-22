@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HelloClass.h"
 
 @interface RuntimeMethodHelper : NSObject
 - (void)hello;
+- (void)hi;
 @end

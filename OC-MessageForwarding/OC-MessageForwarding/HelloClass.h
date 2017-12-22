@@ -10,5 +10,5 @@
 
 @interface HelloClass : NSObject
 - (void)hello;
-+ (HelloClass *)hi;
++ (void)hi;
 @end

@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        _helper = [RuntimeMethodHelper new];
+        _helper = [[RuntimeMethodHelper alloc] init];
     }
     return self;
 }
@@ -33,13 +33,19 @@ void functionForMethod(id self, SEL _cmd)
     NSLog(@"Hello!");
 }
 
-Class functionForClassMethod(id self, SEL _cmd)
+void functionForClassMethod(id self, SEL _cmd)
 {
     NSLog(@"Hi!");
-    return [HelloClass class];
 }
 
+//Class functionForClassMethod(id self, SEL _cmd)
+//{
+//    NSLog(@"Hi!");
+//    return [HelloClass class];
+//}
+
 #pragma mark - 1、动态方法解析
+#if 1
 + (BOOL)resolveClassMethod:(SEL)sel
 {
     NSLog(@"resolveClassMethod");
@@ -65,8 +71,10 @@ Class functionForClassMethod(id self, SEL _cmd)
     }
     return [super resolveInstanceMethod:sel];
 }
+#endif
 
 #pragma mark - 2、备用接收者
+#if 1
 - (id)forwardingTargetForSelector:(SEL)aSelector
 {
     NSLog(@"forwardingTargetForSelector");
@@ -74,11 +82,13 @@ Class functionForClassMethod(id self, SEL _cmd)
     NSString *selectorString = NSStringFromSelector(aSelector);
     
     // 将消息交给_helper来处理
-    if ([selectorString isEqualToString:@"hello"]) {
+    if ([selectorString isEqualToString:@"hello"] || [selectorString isEqualToString:@"hi"])
+    {
         return _helper;
     }
     return [super forwardingTargetForSelector:aSelector];
 }
+#endif
 
 #pragma mark - 3、完整消息转发
 - (void)forwardInvocation:(NSInvocation *)anInvocation
